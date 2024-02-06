@@ -6,7 +6,6 @@ var classThingy = document.querySelector('allClass');
 var clickedId = '';
 
 
-
 //entire funtion basically grabs the id of the movie that the user wants to look for so we can look for information within the database.
 function movieList(){
 //by changing batman content of whatever we search will appear in the code snippet 
@@ -31,7 +30,7 @@ function movieList(){
 //finally we can get to the good bits with all the info we actually want
     .then(function(data){
         //checking where we are
-        console.log(data);
+        // console.log(data);
 
         //creating a var to make iteasier to navigate through results
         var movieData = data.results;
@@ -43,7 +42,7 @@ function movieList(){
         //now we should probaly loop everything inside the array of information we searched
         for(i = 0; i < movieData.length; i++){
 
-            console.log(movieData[i].originalTitleText.text);
+            // console.log(movieData[i].originalTitleText.text);
             var movName = movieData[i].originalTitleText.text;
             var mList = document.createElement('button');
             var mainId = movieData[i].id;
@@ -61,9 +60,9 @@ function movieList(){
 }
 
 
-function imdbMovieInfo(){
+function imdbMovieInfo(imdbID){
     //once again change the engin part to whatever we are given to find the exact imdb link for the movie the user searches for
-    const url = 'https://moviesdatabase.p.rapidapi.com/titles/tt0086250';
+    const url = 'https://moviesdatabase.p.rapidapi.com/titles/' + imdbID;
     const options = {
         method: 'GET',
         headers: {
@@ -72,7 +71,24 @@ function imdbMovieInfo(){
         }
     };
     fetch(url,options)
+    .then(function (response) {
+        return response.json();
+      })
+    .then(function(data){
+
+       console.log(data); 
+    }
+    )
 }
+
+
 
 movieList()
 
+
+moviePlace.addEventListener('click', function(event){
+
+    console.log(event.target.id);
+    imdbMovieInfo(event.target.id);
+
+})
