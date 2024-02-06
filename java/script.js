@@ -1,9 +1,7 @@
 
 var moviePlace = document.querySelector('#movieTitlesHere');
 var classThingy = document.querySelector('allClass');
-
-//for now we need to make a global variable for the imdb id to change later on
-var clickedId = '';
+var searchedMovie = '';
 
 
 //entire funtion basically grabs the id of the movie that the user wants to look for so we can look for information within the database.
@@ -42,9 +40,9 @@ function movieList(){
         //now we should probaly loop everything inside the array of information we searched
         for(i = 0; i < movieData.length; i++){
 
-            // console.log(movieData[i].originalTitleText.text);
+            console.log(movieData[i].originalTitleText.text);
             var movName = movieData[i].originalTitleText.text;
-            var mList = document.createElement('button');
+            var mList = document.createElement('li');
             var mainId = movieData[i].id;
 
 
@@ -81,11 +79,13 @@ function imdbMovieInfo(imdbID){
     )
 }
 
+function grabUserSearch(userInputs){
+
+
+}
 
 
 movieList()
-
-
 moviePlace.addEventListener('click', function(event){
 
     console.log(event.target.id);
