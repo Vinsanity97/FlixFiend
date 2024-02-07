@@ -1,0 +1,22 @@
+body {
+    scroll-behavior: smooth;
+    flex-wrap: wrap;
+}
+
+header{
+    background-color: beige;
+    border: 5px solid black;
+    border-radius: 5px;
+}
+
+h1 {
+    display: flex;
+}
+
+h2 {
+   margin-left: 20rem;
+}
+
+.movie-container {
+justify-content: center;
+}
