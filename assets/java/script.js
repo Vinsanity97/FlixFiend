@@ -1,7 +1,11 @@
 
 var moviePlace = document.querySelector('#movieTitlesHere');
 var classThingy = document.querySelector('allClass');
-var searchedMovie = '';
+var searchBtn = document.querySelector(".search-button");
+var titles = [""];
+
+//for now we need to make a global variable for the imdb id to change later on
+var clickedId = "";
 
 
 //entire funtion basically grabs the id of the movie that the user wants to look for so we can look for information within the database.
@@ -9,11 +13,11 @@ function movieList(){
 //by changing batman content of whatever we search will appear in the code snippet 
 //we also gain a list of many movies containing things relating to part(batman)
 //make sure to use the tag id ad not the _id in order to get the correct link to the movies use wants to see
-    const url = 'https://moviesdatabase.p.rapidapi.com/titles/search/akas/Batman';
+    const url = 'https://moviesdatabase.p.rapidapi.com/titles';
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '2db71bd2e5msh510af4e53f1ecc7p1413ddjsn3037148627dd',
+            'X-RapidAPI-Key': '0bd0c134afmshf176a8ebd0188cap158b97jsn0a8890675a08',
             'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com'
         }
     }
@@ -85,10 +89,24 @@ function grabUserSearch(userInputs){
 }
 
 
-movieList()
+// movieList()
+
+
 moviePlace.addEventListener('click', function(event){
 
     console.log(event.target.id);
     imdbMovieInfo(event.target.id);
 
 })
+
+searchBtn.addEventListener("click", imdbMovieInfo);
+
+searchBtn.addEventListener("click", function (event) {
+    event.preventDefault();
+    var movieTitle = document.getElementById("#search-input");
+    titles.push(movieTitle);
+    var title = JSON.stringify(movieList);
+    localStorage.setItem("title", title);
+});
+
+    //click event to display any city data from history
