@@ -1,6 +1,6 @@
 body {
     scroll-behavior: smooth;
-    flex-wrap: wrap;
+    font-family: Bebas Neue;
 }
 
 header{
@@ -9,14 +9,15 @@ header{
     border-radius: 5px;
 }
 
-h1 {
+h1, span {
     display: flex;
 }
 
-h2 {
-   margin-left: 20rem;
+h2, h3 {
+   display: flex;
+   font-size: 2rem;
 }
 
 .movie-container {
-justify-content: center;
+    display: inline;
 }

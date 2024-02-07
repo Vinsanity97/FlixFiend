@@ -4,21 +4,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Bitter:ital,wght@0,100..900;1,100..900&family=Climate+Crisis&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Rubik+Burned&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="./assets/css/reset.css"/>
     <link rel="stylesheet" href="./assets/css/style.css"/>
     <title>Flix Fiend</title>
 
-    
 </head>
 <body>
   <header class="container-fluid">
-    <h1 class="container-fluid justify-content-center p-4"><img src="./assets/images/flix-fiend-logo1.png" alt="logo art "></h1>
+    <span class="container-fluid justify-content-center p-4"><img src="./assets/images/flix-fiend-logo1.png" alt="logo art "></span1>
   </header>
 
   <div class="container-fluid">
-    <div id="search-form" class="form">
-     <div class="col-lg-3 pb-3">
-        <h1 class="mt-4 h2 p-2 fw-bold form-label">Search Movie:</h1>
+    <div class="row">
+     <div class="col-lg-3">
+      <div id="search-form" class="form">
+        <h1 class="mt-4 h2 p-2 fw-bold">Search Movie:</h1>
           <form class="input-group d-flex flex-column">
             <input class="form-input p-2 rounded"
               type="text" id="search-input" placeholder="Movie title..."/>
@@ -29,12 +33,12 @@
         </div>
       </div>
 
-      <section class="movie container h5 col-md-4 col-lg-6 border">
-        <div class="h5 col-sm-3 p-2">
-          <h2 class="h2 col-sm-3 fw-bold">Movie</h2>
-
+      <div class="col-lg-9 pb-3">
+      <h2 class="col-md-1 col-lg-8 p-5 justify-content-center fw-bold">Movie Title</h2>
+      <section class="movie container col-md-7 border">
+        <div class="h5 col-sm-9 p-2">
+        <h3 class="col-lg-9 p-4  fw-bold">Movie Preview</h3>
         </div>
-
       </section>
 
     
@@ -49,6 +53,8 @@
         <!-- example we search batman and list of batman movies appear hear when we append -->
 
     </ul>
+  </div>
+  </div>
   </div>
     
 
