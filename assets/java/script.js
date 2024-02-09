@@ -89,15 +89,22 @@ function imdbMovieInfo(imdbID){
 searchBtn.addEventListener("click", function () {
     var userInputLower = searchInput.value.toLowerCase();
     var userInputFormattedArr =[];
-    userInput = userInputLower.charAt(0).toUpperCase() + userInputLower.slice(1);
-    console.log(userInput);
-    var userInputSplit = userInput.split(" ");
+   
+   
+    var userInputSplit = userInputLower.split(" ");
     console.log(userInputSplit);
     for (var i = 0; i < userInputSplit.length; i++) {
-       userInputFormattedArr.push(userInputSplit[i][0].toUpperCase()+userInputSplit[i].slice(1)); 
+        if (userInputSplit[i]!=="of"){
+            userInputFormattedArr.push(userInputSplit[i][0].toUpperCase()+userInputSplit[i].slice(1)); 
+            
+        }else {
+            userInputFormattedArr.push(userInputSplit[i])
+        }
+       
           
     }
-
+    userInput = userInputFormattedArr.join(" ")
+    console.log(userInput);
     movieList()
 })
 
