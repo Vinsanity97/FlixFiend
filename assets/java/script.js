@@ -88,8 +88,15 @@ function imdbMovieInfo(imdbID){
 //this part replaces the user input to search for what the movie the user wants
 searchBtn.addEventListener("click", function () {
     var userInputLower = searchInput.value.toLowerCase();
+    var userInputFormattedArr =[];
     userInput = userInputLower.charAt(0).toUpperCase() + userInputLower.slice(1);
     console.log(userInput);
+    var userInputSplit = userInput.split(" ");
+    console.log(userInputSplit);
+    for (var i = 0; i < userInputSplit.length; i++) {
+       userInputFormattedArr.push(userInputSplit[i][0].toUpperCase()+userInputSplit[i].slice(1)); 
+          
+    }
 
     movieList()
 })
