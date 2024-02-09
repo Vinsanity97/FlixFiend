@@ -2,7 +2,7 @@
 var moviePlace = document.querySelector('#movieTitlesHere');
 var classThingy = document.querySelector('allClass');
 var searchBtn = document.querySelector(".search-button");
-var titles = [""];
+var titles = JSON.parse(localStorage.getItem('titles')) || []
 var searchInput = document.getElementById('search-input')
 var userInput;
 //for now we need to make a global variable for the imdb id to change later on
@@ -32,6 +32,8 @@ function movieList(){
 
 //finally we can get to the good bits with all the info we actually want
     .then(function(data){
+        console.log('data from moviedatabase', data);
+        moviePlace.innerHTML=""
         //checking where we are
         // console.log(data);
 
@@ -63,9 +65,9 @@ function movieList(){
 }
 
 
-function imdbMovieInfo(imdbID){
+function imdbMovieInfo(){
     //once again change the engin part to whatever we are given to find the exact imdb link for the movie the user searches for
-    const url = 'https://moviesdatabase.p.rapidapi.com/titles/' + imdbID;
+    const url = 'https://moviesdatabase.p.rapidapi.com/titles/' + userInput.toLowerCase();
     const options = {
         method: 'GET',
         headers: {
@@ -79,14 +81,15 @@ function imdbMovieInfo(imdbID){
       })
     .then(function(data){
 
-       console.log(data); 
+       console.log('data from imdb:', data); 
     }
     )
 }
 
 
 //this part replaces the user input to search for what the movie the user wants
-searchBtn.addEventListener("click", function () {
+searchBtn.addEventListener("click", function (event) {
+    event.preventDefault();
     var userInputLower = searchInput.value.toLowerCase();
     var userInputFormattedArr =[];
    
@@ -105,7 +108,10 @@ searchBtn.addEventListener("click", function () {
     }
     userInput = userInputFormattedArr.join(" ")
     console.log(userInput);
+    searchInput.value=""
+    saveTitle()
     movieList()
+    imdbMovieInfo();
 })
 
 
@@ -117,14 +123,10 @@ moviePlace.addEventListener('click', function(event){
 
 })
 
-searchBtn.addEventListener("click", imdbMovieInfo);
-
-searchBtn.addEventListener("click", function (event) {
-    event.preventDefault();
-    var movieTitle = document.getElementById("#search-input");
-    titles.push(movieTitle);
-    var title = JSON.stringify(movieList);
-    localStorage.setItem("title", title);
-});
+function saveTitle () {
+    if (titles.includes(userInput)) return;
+    titles.push(userInput);
+    localStorage.setItem("titles", JSON.stringify(titles));
+};
 
     //click event to display any city data from history
