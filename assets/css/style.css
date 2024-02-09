@@ -33,7 +33,7 @@ span img {
 
 button:hover {
     /* scale up and glowing border affect for hero image and experience section tabs*/
-    border-color: rgb(157, 157, 234);
+    border-color: rgb(234, 157, 157);
     transform: scale(1.05);
     transition: .1s ease;
     box-shadow: inset -2px 6px 7px 1px rgb(233, 7, 7), 2px 4px 5px rgb(97, 97, 97);
