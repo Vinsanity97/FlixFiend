@@ -1,18 +1,19 @@
-# 
+# Flix-Fiend
 
 ## Description 
 
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
+Flix Fiend app was built for the movie lover who wants to save and view their favorite titles from past to present.
+From the search field the user is given a brief preview which includes title, imdb rating, main actors, and theatrical 
+movie poster. With this project we used a combination of bootstrap, javascript, css, and modal for a quick pop-up 
+preview. All movie information is coming from 2 separate API's using the fetch method to display any given title
+desired. From this build, you can learn how to fetch and dynamically display any information to a webpage along
+with the use of bootstrap and css for app design.
 
--what was your motivation?
--why did you build this project? (Note: the answer is not "Because it was homework assignment.")
--what problem does it solve?
--what did you learn?
 
-![image](./assets/images/Screenshot.png)
+![image](./assets/images/screenshot.png)
 
-## Link to deploy app
+## Link to app
 
 [Deploy Application][def]
 
-[def]: https://nicoinlalaland.github.io/horiseon-accessibility/
+[def]: ""
