@@ -172,6 +172,7 @@ var birthPlace = document.getElementById('birthPlace');
 var miniBio = document.getElementById('miniBio');
 var actorImage = document.getElementById('actor-image');
 
+//this grabs a random actor from a current top 100 actors list
 function topRandomActor(){
     const url = 'https://imdb8.p.rapidapi.com/actors/list-most-popular-celebs?homeCountry=US&currentCountry=US&purchaseCountry=US';
     const options = {
@@ -200,7 +201,7 @@ fetch(url,options)
     })
 }
 
-
+//this function grabs the random actor of the days information and appends it to the index
 function actorInformation(actorId){
 
     const url = 'https://imdb8.p.rapidapi.com/actors/get-bio?nconst=' + actorId;
@@ -232,6 +233,28 @@ fetch(url,options)
 }
 
 
+var historyButton = document.getElementById('history-button');
+var historySeached = document.getElementById('history-searched');
+//function to show user search history
+function titleHistory() {
+    var loadTitle = JSON.parse(localStorage.getItem("titles"))
+
+    for(i = 0; i < loadTitle.length; i++){
+        var movieListings = document.createElement('li');
+        movieListings.textContent = loadTitle[i]
+        console.log(loadTitle[i])
+        historySeached.append(movieListings);
+    
+    }
+
+}
+
+historyButton.addEventListener("click", function(event){
+    event.preventDefault();
+    titleHistory();
+})
+
+
 
 
 //this part replaces the user input to search for what the movie the user wants
@@ -239,6 +262,8 @@ searchBtn.addEventListener("click", function (event) {
     //prevent button and search reseting on click
     event.preventDefault();
 // since api can only detect movies in lowercase we replace entire user search to lowercase letters
+
+historySeached.innerHTML = "";
     var userInputLower = searchInput.value.toLowerCase();
     var userInputFormattedArr =[];
    
