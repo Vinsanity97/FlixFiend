@@ -35,7 +35,7 @@ span img {
     position: absolute;
 }
 
-#search-button:hover, .info-btn:hover {
+#search-button:hover, .info-btn:hover, #history-button:hover {
     /* scale up and glowing border affect for hero image and experience section tabs*/
     transform: scale(1.05);
     transition: .1s ease;
@@ -76,6 +76,8 @@ span img {
 }
 
  #actor-image {
+    border: 5px solid black;
+    border-radius: 10px;
    max-height: 50%;
    max-width: 30%;
 }
