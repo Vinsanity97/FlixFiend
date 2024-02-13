@@ -11,6 +11,7 @@ var theIMDBRating = document.getElementById('ratingIMDB');
 var actorList = document.getElementById('actorss-List');
 
 
+
 var userInput;
 //for now we need to make a global variable for the imdb id to change later on
 var clickedId = "";
@@ -159,6 +160,79 @@ fetch(url,options)
 
 }
 
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+  
+
+//global variables for actor information
+var actorName = document.getElementById('actorName');
+var bornDate = document.getElementById('bornDate');
+var birthPlace = document.getElementById('birthPlace');
+var miniBio = document.getElementById('miniBio');
+var actorImage = document.getElementById('actor-image');
+
+function topRandomActor(){
+    const url = 'https://imdb8.p.rapidapi.com/actors/list-most-popular-celebs?homeCountry=US&currentCountry=US&purchaseCountry=US';
+    const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '2db71bd2e5msh510af4e53f1ecc7p1413ddjsn3037148627dd',
+		'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
+	}
+};
+
+fetch(url,options)
+    .then(function (response) {
+        return response.json();
+      })
+    .then(function(data){
+        console.log(data)
+        var ranNum = getRandomInt(100);
+        var ranActor = data[ranNum];
+        console.log(data[ranNum]);
+       
+        console.log(typeof ranActor)
+        var actID = ranActor.slice(6,15);
+        console.log(actID);
+        actorInformation(actID);
+
+    })
+}
+
+
+function actorInformation(actorId){
+
+    const url = 'https://imdb8.p.rapidapi.com/actors/get-bio?nconst=' + actorId;
+    const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '2db71bd2e5msh510af4e53f1ecc7p1413ddjsn3037148627dd',
+		'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
+	}
+};
+
+fetch(url,options)
+    .then(function (response) {
+        return response.json();
+      })
+    .then(function(data){
+        console.log(data)
+        actorName.textContent = data.name;
+        birthPlace.textContent = data.birthPlace;
+        bornDate.textContent = data.birthDate
+        miniBio.textContent = data.miniBios[0].text;
+        actorImage.setAttribute('src', data.image.url)
+
+       
+       
+        
+
+    })
+}
+
+
+
 
 //this part replaces the user input to search for what the movie the user wants
 searchBtn.addEventListener("click", function (event) {
@@ -207,3 +281,4 @@ function saveTitle () {
 };
 
     //click event to display any city data from history
+    topRandomActor();
