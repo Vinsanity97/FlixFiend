@@ -58,7 +58,7 @@ function movieList(){
 
             //we then set each item to have the imdb id for later locating on website
             mList.setAttribute('id',mainId)
-            mList.setAttribute('class', "btn btn-primary")
+            mList.setAttribute('class', "btn btn-secondary")
             mList.setAttribute('type', "button")
             mList.setAttribute('data-bs-toggle', "modal")
             mList.setAttribute('data-bs-target', "#reg-modal")
