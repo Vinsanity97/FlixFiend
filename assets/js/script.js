@@ -4,7 +4,9 @@ var classThingy = document.querySelector('allClass');
 var searchBtn = document.querySelector(".search-button");
 var titles = JSON.parse(localStorage.getItem('titles')) || []
 var searchInput = document.getElementById('search-input')
-var movieImage = document.getElementById
+var movieImage = document.getElementById('specific-image');
+var movieModalTitle = document.getElementById('movieTitleModal');
+var releaseTime = document.getElementById('releaseTime');
 
 
 var userInput;
@@ -88,7 +90,21 @@ function imdbMovieInfo(){
     .then(function(data){
         //in here we change the modal to the data of whatever the user clicked on.
 
-       console.log('data from imdb:', data); 
+       console.log('data from imdb:', data.results); 
+       releaseTime.innerHTML = "";
+       movieModalTitle.innerHTML = ""; //resets title name
+       movieImage.setAttribute('src', data.results.primaryImage.url)
+       movieModalTitle.append(data.results.originalTitleText.text)
+
+       //day
+       releaseTime.append(data.results.releaseDate.day + " ")
+
+       //month
+       releaseTime.append(data.results.releaseDate.month + " ")
+
+       //year
+       releaseTime.append(data.results.releaseDate.year)
+
 
        
     }
