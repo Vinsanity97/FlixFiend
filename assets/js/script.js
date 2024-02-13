@@ -4,6 +4,9 @@ var classThingy = document.querySelector('allClass');
 var searchBtn = document.querySelector(".search-button");
 var titles = JSON.parse(localStorage.getItem('titles')) || []
 var searchInput = document.getElementById('search-input')
+var movieImage = document.getElementById
+
+
 var userInput;
 //for now we need to make a global variable for the imdb id to change later on
 var clickedId = "";
