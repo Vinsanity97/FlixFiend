@@ -7,6 +7,8 @@ var searchInput = document.getElementById('search-input')
 var movieImage = document.getElementById('specific-image');
 var movieModalTitle = document.getElementById('movieTitleModal');
 var releaseTime = document.getElementById('releaseTime');
+var theIMDBRating = document.getElementById('ratingIMDB');
+var actorList = document.getElementById('actorss-List');
 
 
 var userInput;
@@ -95,6 +97,7 @@ function imdbMovieInfo(){
        movieModalTitle.innerHTML = ""; //resets title name
        movieImage.setAttribute('src', data.results.primaryImage.url)
        movieModalTitle.append(data.results.originalTitleText.text)
+       releaseTime.append("Release Date: ")
 
        //day
        releaseTime.append(data.results.releaseDate.day + " ")
@@ -109,6 +112,50 @@ function imdbMovieInfo(){
        
     }
     )
+}
+
+function imdbRatings(){
+    const url = 'https://imdb146.p.rapidapi.com/v1/title/?id=' + clickedId;
+    const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '2db71bd2e5msh510af4e53f1ecc7p1413ddjsn3037148627dd',
+		'X-RapidAPI-Host': 'imdb146.p.rapidapi.com'
+	}
+};
+fetch(url,options)
+    .then(function (response) {
+        return response.json();
+      })
+    .then(function(data){
+        console.log(data);
+        actorList.innerHTML = " "
+        theIMDBRating.innerHTML = "";
+        theIMDBRating.append("IMDB Rating: ")
+        theIMDBRating.append(data.ratingsSummary.aggregateRating)
+        theIMDBRating.append(" /10")
+        var actorarray = data.cast.edges;
+
+        
+        for(i = 0; i < 3; i++){
+            var actName = actorarray[i].node.name.nameText.text;
+            var actCharacter = actorarray[i].node.characters[0].name;
+            var actList = document.createElement('li');
+            
+            actList.setAttribute('id', actorarray[i]);
+            actList.textContent = actName + " as "+ actCharacter;
+            console.log(actName);
+            actorList.append(actList);
+
+            
+            
+
+            
+        }
+        
+    })
+
+
 }
 
 
@@ -147,6 +194,7 @@ moviePlace.addEventListener('click', function(event){
 
     console.log(event.target.id);
     clickedId = event.target.id;
+    imdbRatings();
     imdbMovieInfo();
 
 })
