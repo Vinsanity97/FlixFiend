@@ -96,6 +96,9 @@ function imdbMovieInfo(){
        releaseTime.innerHTML = "";
        movieModalTitle.innerHTML = ""; //resets title name
        movieImage.setAttribute('src', data.results.primaryImage.url)
+
+       movieImage.setAttribute('class', "poster-image");
+
        movieModalTitle.append(data.results.originalTitleText.text)
        releaseTime.append("Release Date: ")
 

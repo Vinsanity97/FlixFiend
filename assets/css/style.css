@@ -54,6 +54,15 @@ span img {
     border: 2px solid black;
 } 
 
+.poster-image {
+    width: 50%;
+    height: 50%;
+}
+
+.modal-body{
+    font-size: 23px;
+}
+
 .btn-secondary:hover {
     transform: scale(1.05);
     transition: .1s ease;
