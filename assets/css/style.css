@@ -35,7 +35,7 @@ span img {
     position: absolute;
 }
 
-#search-button:hover {
+#search-button:hover, .info-btn:hover {
     /* scale up and glowing border affect for hero image and experience section tabs*/
     transform: scale(1.05);
     transition: .1s ease;
@@ -58,6 +58,10 @@ span img {
 .modal-content {
     text-align: center;
     font-size: 24px;
+}
+
+.container {
+    text-align: center;
 }
 
 .btn-secondary:hover {
