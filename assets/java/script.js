@@ -49,13 +49,16 @@ function movieList(){
 
             // console.log(movieData[i].originalTitleText.text);
             var movName = movieData[i].originalTitleText.text;
-            var mList = document.createElement('li');
+            var mList = document.createElement('button');
             var mainId = movieData[i].id;
 
 
             //we then set each item to have the imdb id for later locating on website
             mList.setAttribute('id',mainId)
-            mList.setAttribute('class', "allClass")
+            mList.setAttribute('class', "btn btn-primary")
+            mList.setAttribute('type', "button")
+            mList.setAttribute('data-bs-toggle', "modal")
+            mList.setAttribute('data-bs-target', "#reg-modal")
             mList.textContent = movName;
             moviePlace.append(mList);
 
@@ -64,10 +67,10 @@ function movieList(){
     })
 }
 
-
+//with this function we are able to exxtract the imdb movie id that the user clicks on 
 function imdbMovieInfo(){
     //once again change the engin part to whatever we are given to find the exact imdb link for the movie the user searches for
-    const url = 'https://moviesdatabase.p.rapidapi.com/titles/' + userInput.toLowerCase();
+    const url = 'https://moviesdatabase.p.rapidapi.com/titles/' + clickedId;
     const options = {
         method: 'GET',
         headers: {
@@ -80,8 +83,11 @@ function imdbMovieInfo(){
         return response.json();
       })
     .then(function(data){
+        //in here we change the modal to the data of whatever the user clicked on.
 
        console.log('data from imdb:', data); 
+
+       
     }
     )
 }
@@ -89,7 +95,9 @@ function imdbMovieInfo(){
 
 //this part replaces the user input to search for what the movie the user wants
 searchBtn.addEventListener("click", function (event) {
+    //prevent button and search reseting on click
     event.preventDefault();
+// since api can only detect movies in lowercase we replace entire user search to lowercase letters
     var userInputLower = searchInput.value.toLowerCase();
     var userInputFormattedArr =[];
    
@@ -103,9 +111,8 @@ searchBtn.addEventListener("click", function (event) {
         }else {
             userInputFormattedArr.push(userInputSplit[i])
         }
-       
-          
     }
+    
     userInput = userInputFormattedArr.join(" ")
     console.log(userInput);
     searchInput.value=""
@@ -116,10 +123,12 @@ searchBtn.addEventListener("click", function (event) {
 
 
 
+//this event listener grabs the id of the movie that the uer clicked on
 moviePlace.addEventListener('click', function(event){
 
     console.log(event.target.id);
-    imdbMovieInfo(event.target.id);
+    clickedId = event.target.id;
+    imdbMovieInfo();
 
 })
 
