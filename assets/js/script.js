@@ -241,6 +241,7 @@ function titleHistory() {
 
     for(i = 0; i < loadTitle.length; i++){
         var movieListings = document.createElement('li');
+        movieListings.setAttribute('class', "history-list");
         movieListings.textContent = loadTitle[i]
         console.log(loadTitle[i])
         historySeached.append(movieListings);
@@ -250,6 +251,8 @@ function titleHistory() {
 }
 
 historyButton.addEventListener("click", function(event){
+    moviePlace.innerHTML=""
+    historySeached.innerHTML = "";
     event.preventDefault();
     titleHistory();
 })
@@ -304,8 +307,6 @@ function saveTitle () {
     titles.push(userInput);
     localStorage.setItem("titles", JSON.stringify(titles));
 };
-
-    //click event to display any city data from history
 
     topRandomActor();
 

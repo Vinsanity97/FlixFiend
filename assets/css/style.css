@@ -70,6 +70,10 @@ span img {
     box-shadow: inset -2px 1px 5px 1px rgb(243, 243, 243), 1px 2px 5px rgb(233, 7, 7);
 }
 
+.history-list {
+    margin-top: 8px;
+    font-size: 25px;
+}
 
  #actor-image {
    max-height: 50%;
