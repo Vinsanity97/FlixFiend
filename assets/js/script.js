@@ -207,3 +207,26 @@ function saveTitle () {
 };
 
     //click event to display any city data from history
+
+    function fetchMovies() {
+        const url = 'https://imdb-top-100-movies.p.rapidapi.com/';
+        const options = {
+          method: 'GET',
+          headers: {
+            'X-RapidAPI-Key': 'e53a65a3b2mshbdc4ca9860837bfp1e2c74jsn5f3eff6c44e0',
+            'X-RapidAPI-Host': 'imdb-top-100-movies.p.rapidapi.com'
+          }
+        };
+        
+    fetch(url,options)
+    .then(function(response){
+        return response.json();
+    })
+    
+    
+    .then(function(data) {
+        console.log(data);
+    })
+    }
+
+    fetchMovies();
