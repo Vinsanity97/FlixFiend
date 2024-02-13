@@ -57,14 +57,27 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
+          <!-- the title for the movie will appear at the top of the header in the paragraph below -->
+          <p id="movieTitleModal"></p>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">x</button>
       </div>
       <div class="modal-body">
         <!-- the content for the movies will go inside here -->
-        <p>blasdlasdkncad ash da djha djha d agh ghagd ahg jhg adva</p>
+        <h5 id="releaseTime"></h5>
+        <!-- imdb ratings -->
+        <p id="ratingIMDB"></p>
+
+        <!-- list for actors -->
+        <ul id="actorss-List">
+
+
+        </ul>
 
         <!-- image will go in div below so append it in the imdb info function-->
-        <div id="movie-image"></div>
+        <div id="movie-image">
+          <img id="specific-image" src="" alt="loading Image">
+
+        </div>
 
       </div>
         ...
